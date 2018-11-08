@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
+
+//导入业务处理模块
+const strl = require('../controller/index.js')
+
 //用户请求的项目首页
-router.get('/',(req,res) => {
-    //使用render函数之前,要保证安装配置了ajs引擎模板
-    res.render('index.ejs',{name:'zs'})
-})
+router.get('/',strl)
 
 
 //暴露在外面

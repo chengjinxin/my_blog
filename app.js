@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-
+const fs = require('fs')
+const path = require('path')
 
 
 
@@ -20,13 +21,25 @@ app.use('/node_modules',express.static('./node_modules'))
 
 
 //导入index.js路由模板
-const router1 = require('./router/index.js')
-app.use(router1)
+// const router1 = require('./router/index.js')
+// app.use(router1)
 
-//导入用户模块
-const router2 = require('./router/user.js')
-app.use(router2)
+// //导入用户模块
+// const router2 = require('./router/user.js')
+// app.use(router2)
 
+
+//使用循环的方式进行路由的自动注册
+fs.readdir(path.join(__dirname,'./router'),(err,filenames) => {
+    if(err) return console.log('读取router文件的路由失败')
+    //循环
+    filenames.forEach(fname => {
+        //没循环一次,拼接一个完整的路由模块
+        //然后使用require导入这个路由模块
+        const router = require(path.join(__dirname,'./router',fname))
+        app.use(router)
+    })
+})
 
 
 
