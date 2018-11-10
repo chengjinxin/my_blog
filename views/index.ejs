@@ -36,8 +36,8 @@
             <% if(islogin) { %>
                 <!-- 注销和用户名按钮 -->
             <div class="nav navbar-right navbar-form">
-              <button class="btn btn-warning">欢迎***</button>
-              <button class="btn btn-danger">注销</button>
+              <button class="btn btn-warning">欢迎<%= user.nickname %></button>
+              <a class="btn btn-danger" href='/logout'>注销</a>
             </div>
 
             <ul class="nav navbar-nav navbar-right">

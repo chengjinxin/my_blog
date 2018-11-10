@@ -67,9 +67,18 @@ const logo = (req,res) => {
     })
 }
 
+//注销
+const logout = (req,res) => {
+    req.session.destroy(function() {
+        //使用res.redirect方法可以让客户端重新访问指定的页面
+        res.redirect('/')
+    })
+}
+
 module.exports = {
     showRegister,
     showLogin,
     reg,
-    logo
+    logo,
+    logout
 }
