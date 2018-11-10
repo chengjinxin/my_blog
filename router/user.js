@@ -19,5 +19,9 @@ router.post('/register',str.reg)
 //监听登录用户
 router.post('/login',str.logo)
 
+
+//监听注销请求
+router.get('/logout',str.logout)
+
 //暴露在外面
 module.exports = router
