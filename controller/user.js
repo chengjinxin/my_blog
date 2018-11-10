@@ -58,6 +58,11 @@ const logo = (req,res) => {
         if(err) return res.send({msg:'用户登录失败',status:501})
         //条数不为1,则失败
         if(result.length !==1) return res.send({msg:'用户登录失败',status:502})
+        //将登陆的成功信息挂载到session
+        // console.log(result)
+        req.session.user = result[0]
+        //将用户登录成功之后的结果挂在到session上
+        req.session.islogin = true
         res.send({msg:'用户登录成功',status:200})
     })
 }

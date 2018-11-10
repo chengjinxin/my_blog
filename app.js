@@ -4,6 +4,17 @@ const bodyParser = require('body-parser')
 const fs = require('fs')
 const path = require('path')
 
+// 导入session中间件
+const session = require('express-session')
+
+//注册session中间件
+app.use(
+    session({
+        secret:'这是加密的秘钥',
+        resave:false,
+        saveUninitialized:false
+    })
+)
 
 
 //设置模板引擎名称
